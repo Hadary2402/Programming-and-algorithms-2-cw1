@@ -80,3 +80,18 @@ int main() {
                 cout << "Invalid username or password. Please try again." << endl;
             }
             break;
+        case 2:
+            // create an account
+            registerUser();
+            break;
+        case 3:
+            // Exit
+            cout << "Exiting the password manager application. Goodbye!" << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+    } while (choice != 6);
+
+    return 0;
+}
