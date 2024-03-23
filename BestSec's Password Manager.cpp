@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -91,7 +92,7 @@ int main() {
         default:
             cout << "Invalid choice. Please enter a valid option." << endl;
         }
-    } while (choice != 6);
+    } while (choice != 3);
 
     return 0;
 }
@@ -129,16 +130,24 @@ string generatePassword(int length) {
 
 string encrypt(const string& password) {
     string encryptedPwd = password;
+    int shift = 3; // Define the shift for Caesar cipher
     for (size_t i = 0; i < password.length(); ++i) {
-        encryptedPwd[i] ^= 0x5A; // XOR with a constant value
+        if (isalpha(password[i])) {
+            char base = islower(password[i]) ? 'a' : 'A';
+            encryptedPwd[i] = (password[i] - base + shift) % 26 + base;
+        }
     }
     return encryptedPwd;
 }
 
 string decrypt(const string& encryptedPwd) {
     string decryptedPwd = encryptedPwd;
+    int shift = 3; // Define the same shift used for encryption
     for (size_t i = 0; i < encryptedPwd.length(); ++i) {
-        decryptedPwd[i] ^= 0x5A; // XOR with the same constant value
+        if (isalpha(encryptedPwd[i])) {
+            char base = islower(encryptedPwd[i]) ? 'a' : 'A';
+            decryptedPwd[i] = (encryptedPwd[i] - base - shift + 26) % 26 + base;
+        }
     }
     return decryptedPwd;
 }
