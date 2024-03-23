@@ -163,3 +163,21 @@ void storePassword(const string& usrname, const string& encryptedPwd) {
         cout << "Error: Unable to open passwords.txt for writing." << endl;
     }
 }
+
+bool authenticateUser(const string& usrname, const string& pwd) {
+    ifstream infile("passwords.txt");
+    if (infile.is_open()) {
+        string storedUsername, storedEncryptedPwd;
+        while (infile >> storedUsername >> storedEncryptedPwd) {
+            if (storedUsername == usrname && decrypt(storedEncryptedPwd) == pwd) {
+                infile.close();
+                return true;
+            }
+        }
+        infile.close();
+    }
+    else {
+        cout << "Error: Unable to open passwords.txt for reading." << endl;
+    }
+    return false;
+}
