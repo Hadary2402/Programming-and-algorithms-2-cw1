@@ -201,3 +201,18 @@ string retrieveEncryptedPassword(const string& usrname) {
 }
 
 void registerUser() {
+    string usrname, pwd;
+    cout << "Enter a new username: ";
+    cin >> usrname;
+    cout << "Enter a new password: ";
+    cin >> pwd;
+    if (authenticateUser(usrname, pwd)) {
+        cout << "Username already exists. Please choose a different username." << endl;
+    }
+    else {
+        // Encrypt the password before storing
+        string encryptedPwd = encrypt(pwd);
+        registeredPassword(usrname, encryptedPwd);
+        cout << "Registration successful!" << endl;
+    }
+}
