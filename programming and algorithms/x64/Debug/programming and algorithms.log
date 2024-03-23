@@ -1,0 +1,3 @@
+﻿  programming and algorithms.cpp
+C:\Users\moham\source\repos\programming and algorithms\programming and algorithms\programming and algorithms.cpp(123,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  programming and algorithms.vcxproj -> C:\Users\moham\source\repos\programming and algorithms\x64\Debug\programming and algorithms.exe
