@@ -115,3 +115,29 @@ void displayMenu2login() {
     cout << "2. Generate Password" << endl;
     cout << "3. Retrieve Password" << endl;
 }
+
+string generatePassword(int length) {
+    const string CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?";
+    srand(time(NULL));
+    string password;
+    for (int i = 0; i < length; ++i) {
+        password += CHARACTERS[rand() % CHARACTERS.length()];
+    }
+    return password;
+}
+
+string encrypt(const string& password) {
+    string encryptedPwd = password;
+    for (size_t i = 0; i < password.length(); ++i) {
+        encryptedPwd[i] ^= 0x5A; // XOR with a constant value
+    }
+    return encryptedPwd;
+}
+
+string decrypt(const string& encryptedPwd) {
+    string decryptedPwd = encryptedPwd;
+    for (size_t i = 0; i < encryptedPwd.length(); ++i) {
+        decryptedPwd[i] ^= 0x5A; // XOR with the same constant value
+    }
+    return decryptedPwd;
+}
