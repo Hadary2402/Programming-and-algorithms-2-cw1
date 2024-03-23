@@ -141,3 +141,25 @@ string decrypt(const string& encryptedPwd) {
     }
     return decryptedPwd;
 }
+
+void registeredPassword(const string& usrname, const string& encryptedPwd) {
+    ofstream outfile("passwords.txt", ios::app);
+    if (outfile.is_open()) {
+        outfile << usrname << " " << encryptedPwd << endl;
+        outfile.close();
+    }
+    else {
+        cout << "Error: Unable to open passwords.txt for writing." << endl;
+    }
+}
+
+void storePassword(const string& usrname, const string& encryptedPwd) {
+    ofstream outfile("storedpasswords.txt", ios::app);
+    if (outfile.is_open()) {
+        outfile << usrname << " " << encryptedPwd << endl;
+        outfile.close();
+    }
+    else {
+        cout << "Error: Unable to open passwords.txt for writing." << endl;
+    }
+}
