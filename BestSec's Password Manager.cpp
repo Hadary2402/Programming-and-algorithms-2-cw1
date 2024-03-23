@@ -181,3 +181,23 @@ bool authenticateUser(const string& usrname, const string& pwd) {
     }
     return false;
 }
+
+string retrieveEncryptedPassword(const string& usrname) {
+    ifstream infile("storedpasswords.txt");
+    if (infile.is_open()) {
+        string storedUsername, storedEncryptedPwd;
+        while (infile >> storedUsername >> storedEncryptedPwd) {
+            if (storedUsername == usrname) {
+                infile.close();
+                return storedEncryptedPwd;
+            }
+        }
+        infile.close();
+    }
+    else {
+        cout << "Error: Unable to open passwords.txt for reading." << endl;
+    }
+    return "";
+}
+
+void registerUser() {
