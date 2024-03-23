@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -95,6 +95,7 @@ int main() {
 
     return 0;
 }
+
 // Function definitions
 
 void displayMenu() {
